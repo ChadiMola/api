@@ -6,7 +6,7 @@ function Home() {
   return (<>
   <div className='container p-3'>
    <div class="input-group input-group-sm mb-3" style={{width:"300px"}}>
-  <input onChange={(e)=>setId(e.target.value)} type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
+  <input onChange={(e)=>setId(e.target.value)}  placeholder='Search by Id' type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
 </div>
     <Link to={`/User/${id}`}>
         <button type="button" class="btn btn-outline-success mb-2">Get user data</button>
