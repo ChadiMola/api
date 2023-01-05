@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Loader from "./Loader";
 import User from "./User";
 
@@ -23,7 +24,7 @@ function UserList() {
     <>
       {isLoading ? (
         <Loader />
-      ) : error === null ? (
+      ) : error === null ? (<>
         <div className="container">
           <table className="table table-dark">
             <thead>
@@ -35,10 +36,16 @@ function UserList() {
               </tr>
             </thead>
             <tbody>
-              <User data={listOfUser} />
+              {React.Children.toArray(listOfUser.map((el) => <User el={el} />))}
             </tbody>
           </table>
         </div>
+        <Link to="/">
+        <button type="button" class="btn btn-danger mt-3">
+          Return to Home
+        </button>
+      </Link>
+      </>
       ) : (
         <h1 colSpan="4">{`Error ${error}`}</h1>
       )}
